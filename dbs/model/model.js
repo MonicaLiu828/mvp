@@ -4,7 +4,8 @@ let businessSchema = new mongoose.Schema({
   name: String,
   distance: Number,
   price: String,
-  display_address: [String]
+  display_address: [String],
+  image_url: String
 });
 
 const Restaurants = mongoose.model('Restaurants', businessSchema);

@@ -23,6 +23,9 @@ import PaymentsIcon from '@mui/icons-material/Payments';
 
 import ResponsiveAppBar from './AppBar.jsx'
 
+
+var ScrollArea = require('react-scrollbar');
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   // ...theme.typography.body2,
@@ -40,6 +43,7 @@ const App = () => {
   const [allRes, setAllRes] = useState([])
   const [found, setFound] = useState(true)
   const [displayRes, setDisplayRes] = useState([])
+  const [isClick, setIsClick] = useState({})
 
   useEffect(() => {
     axios.get('/restaurants')
@@ -65,6 +69,11 @@ const App = () => {
       params: data
     }).then((response) => {
       console.log('response is ', response.data)
+      var status = {}
+      response.data.businesses.forEach((each) => {
+        status[each.name] = false;
+      })
+      setIsClick(status)
       setAllRes(response.data.businesses)
       setFound(response.data.found)
     })
@@ -73,7 +82,7 @@ const App = () => {
       console.log(error)
     })
   }
-  const handleVisit = (data) => {
+  const handleVisit = (event,data) => {
     console.log('test for visit', data)
     axios({
       method: 'post',
@@ -82,8 +91,14 @@ const App = () => {
     }).then((response) => {
       axios.get('/restaurants')
       .then((response) => {
+        console.log(isClick)
         // console.log('test for visit again',response)
         setDisplayRes(response.data)
+        console.log('event target',event.target )
+        var newState =JSON.parse(JSON.stringify(isClick))
+        newState[data.name] =true
+        setIsClick(newState);
+        event.target.disabled = true
       })
       .catch((err) => {
         console.log(err)
@@ -197,12 +212,18 @@ const App = () => {
                           <br />
                           <BusinessIcon />{element.location['display_address']}
                           <br />
-                          <Button variant="contained" onClick={() => handleVisit({
+                          <Button variant="contained" onClick={(event) => handleVisit(event, {
                             name: element.name,
                             distance: element.distance,
                             price: element.price,
-                            display_address: element.location['display_address']})} color='secondary' endIcon={<CheckBoxIcon />}>Click to visit</Button>
-
+                            display_address: element.location['display_address'],
+                            image_url: element['image_url']})} color={isClick[element.name]? 'success':'secondary'} endIcon={<CheckBoxIcon />}>{isClick[element.name]? 'visited':'Click to visit'}</Button>
+                          {/* { isClick[element.name] &&  <Button variant="contained" onClick={(event) => handleVisit(event,{
+                            name: element.name,
+                            distance: element.distance,
+                            price: element.price,
+                            display_address: element.location['display_address'],
+                            image_url: element['image_url']})} color='secondary' endIcon={<CheckBoxIcon />}>'visited'</Button>} */}
                         </Item>
                       </Grid>
                     </Grid>
@@ -214,19 +235,22 @@ const App = () => {
             </Grid>
           </Paper>
         </Grid>
-        <Grid item md={4}>
-          <Paper elevation={3}>
+        <Grid item md={4} >
+          {/* <div> */}
+          <Paper elevation={3} style={{maxHeight: 750, overflow: 'auto'}}>
             <Item><h1>Restaurants visited</h1></Item>
             {displayRes.map((each) => {
               return(
-              <Item>
+              <Item >
                 <h4>{each.name}</h4>
-                <SocialDistanceIcon />{Math.floor(each.distance) + " meter"}
-                <PaymentsIcon />{each.price}
+                <img src={each['image_url']} width='150px' height='150px'></img>
+                <SocialDistanceIcon />{Math.floor(each.distance) + " meter" }&nbsp;&nbsp;&nbsp;&nbsp;
+                <PaymentsIcon />{each.price}&nbsp;&nbsp;&nbsp;&nbsp;
               </Item>
               )
             })}
           </Paper>
+          {/* </div> */}
         </Grid>
       </Grid>
     </div>
