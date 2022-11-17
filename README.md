@@ -45,19 +45,17 @@ Once the project moves into development, the press release can be used as a touc
 
 
 ## Summary ##
-  All data from yelp api.<br />
-  In navigation part, you can choose location, find nearby restaurants by your preferred price, category and radius. When you click the 'what's eat' button. <br />
-  This app will pop up relevant restaurants in the Random Restaurants part. It will gives you at most 4 restaurants at one time. Also, if there is no releted restaurants within your criteria, this app will search and return random results by your location instead.<br />
-  When you chosed one popped-up restaurant you' like to go, click 'click to visit' button, then this restaurant will go into Restaurants visited part and this 'click to visit' button will become to 'visited'.<br />
-  All restaurants you'd been visited will be listed in Restaurants visited part. You can check whether one restaurant you'd like to visit has been visited before.
+  - Datasource: all restaurant data is from yelp api.
+  - Navigation: you can choose location, find nearby restaurants by your preferred price, category and radius. When you click the 'what's eat' button.
+  - Functionality:
+    - this app will pop up relevant restaurants in the Random Restaurants part. It will gives you at most 4 restaurants at one time. Also, if there is no releted restaurants within your criteria, this app will search and return random results by your location instead.
+    - when you chosed one popped-up restaurant you' like to go, click 'click to visit' button, then this restaurant will go into Restaurants visited part and this 'click to visit' button will become to 'visited'.
+  - Visited Records: all restaurants you'd been visited will be listed in Restaurants visited part. You can check whether one restaurant you'd like to visit has been visited before.
 
 
 ## How to Get Started ##
-  git clone and run  `npm install`<br />
-
-  start server by run `npm run server-dev`<br />
-
-  Then start React by running `npm run react-dev`<br />
-
-  Go to `localhost:3000` you can find this app and then enjoy your meal with random restaurants!
+  - git clone and run  `npm install`
+  - start server by run `npm run server-dev`
+  - then start React by running `npm run react-dev`
+  - go to `localhost:3000` you can find this app and then enjoy your meal with random restaurants!
 
