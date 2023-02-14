@@ -31,7 +31,7 @@ Once the project moves into development, the press release can be used as a touc
 
 ### homepage Page
 <div align="center" width="100%">
-  <img src="https://res.cloudinary.com/dqlxf5j8e/image/upload/v1676349816/MVP/Screenshot_2023-02-13_at_8.39.19_PM_pfvpmo.png" width="70%"/>
+  <img src="https://res.cloudinary.com/dqlxf5j8e/image/upload/v1676349816/MVP/Screenshot_2023-02-13_at_8.39.19_PM_pfvpmo.png" width="85%"/>
 </div>
 
 ## Tech Stack
