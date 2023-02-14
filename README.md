@@ -54,8 +54,10 @@ Once the project moves into development, the press release can be used as a touc
 
 
 ## How to Get Started ##
-  - git clone and run  `npm install`
-  - start server by run `npm run server-dev`
-  - then start React by running `npm run react-dev`
-  - go to `localhost:3000` you can find this app and then enjoy your meal with random restaurants!
+  - Run git clone to clone this repo to your workspace
+  - Run `npm install` to install necessary modules
+  - Create your own `.env` file in the root path
+  - Start server by run `npm run server-dev`
+  - Then start React by running `npm run react-dev`
+  - Go to `localhost:3000` you can find this app and then enjoy your meal with random restaurants!
 

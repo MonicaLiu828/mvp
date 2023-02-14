@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
-let businessSchema = new mongoose.Schema({
+/**
+ * Restaurant schema
+ */
+const restaurantSchema = new mongoose.Schema({
   name: String,
   distance: Number,
   price: String,
@@ -8,15 +11,29 @@ let businessSchema = new mongoose.Schema({
   image_url: String
 });
 
-const Restaurants = mongoose.model('Restaurants', businessSchema);
+/**
+ * Restaurant model
+ */
+const Restaurants = mongoose.model('Restaurants', restaurantSchema);
 
+/**
+ * Create promised used to save the restaurant.
+ * 
+ * @param data restaurant info
+ * @returns save promise 
+ */
 const save = function (data) {
-  var restaurant = new Restaurants(data)
-  return restaurant.save()
+  var restaurant = new Restaurants(data);
+  return restaurant.save();
 }
 
+/**
+ * Find all visited restaurants in database.
+ * 
+ * @returns all databases 
+ */
 const getAll = () => {
-  return Restaurants.find().exec()
+  return Restaurants.find().exec();
 }
 
 module.exports.save = save;

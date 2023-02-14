@@ -6,6 +6,7 @@ import Category from './Category.jsx';
 import Radius from './Radius.jsx';
 import Card from './Card.jsx';
 
+// MUI imports 
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -22,7 +23,6 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import PaymentsIcon from '@mui/icons-material/Payments';
 
 import ResponsiveAppBar from './AppBar.jsx'
-
 
 var ScrollArea = require('react-scrollbar');
 
@@ -48,13 +48,12 @@ const App = () => {
   useEffect(() => {
     axios.get('/restaurants')
     .then((response) => {
-      // console.log('test for visit again',response)
-      setDisplayRes(response.data)
+      setDisplayRes(response.data);
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
     })
-  },[])
+  },[]);
 
   const handleOnClick = () => {
     var data = {
@@ -62,28 +61,27 @@ const App = () => {
       price: price,
       categories: category,
       radius: radius
-    }
+    };
     axios({
       method: 'get',
       url: '/yelp',
       params: data
     }).then((response) => {
-      console.log('response is ', response.data)
+      console.log('response is ', response.data);
       var status = {}
       response.data.businesses.forEach((each) => {
         status[each.name] = false;
       })
-      setIsClick(status)
-      setAllRes(response.data.businesses)
-      setFound(response.data.found)
+      setIsClick(status);
+      setAllRes(response.data.businesses);
+      setFound(response.data.found);
     })
     .catch((error) => {
-      console.log(data)
-      console.log(error)
+      console.log(data);
+      console.log(error);
     })
   }
   const handleVisit = (event,data) => {
-    console.log('test for visit', data)
     axios({
       method: 'post',
       url: '/restaurants',
@@ -91,14 +89,13 @@ const App = () => {
     }).then((response) => {
       axios.get('/restaurants')
       .then((response) => {
-        console.log(isClick)
-        // console.log('test for visit again',response)
-        setDisplayRes(response.data)
-        console.log('event target',event.target )
-        var newState =JSON.parse(JSON.stringify(isClick))
-        newState[data.name] =true
+        console.log(isClick);
+        setDisplayRes(response.data);
+        console.log('event target', event.target);
+        var newState =JSON.parse(JSON.stringify(isClick));
+        newState[data.name] = true;
         setIsClick(newState);
-        event.target.disabled = true
+        event.target.disabled = true;
       })
       .catch((err) => {
         console.log(err)
@@ -108,67 +105,15 @@ const App = () => {
     })
   }
 
-  return(<div style={{
+  return (
+  <div style={{
       backgroundColor: 'rgb(231, 235, 240)',
       // width: '100px',
       // height: '100px'
     }}>
-    {/* <h1>WHAT'S EAT</h1> */}
     <ResponsiveAppBar></ResponsiveAppBar>
     <br />
-    {/* <form>
-      <label>location</label>
-      <TextField label="Location" type="text" value={location} onChange={(event) => {setLocation(event.target.value)}} variant="outlined"></TextField>
-    </form>
-    <Price price={price} setPrice={setPrice}></Price>
-    <Category category={category} setCategory={setCategory}></Category>
-    <Radius radius= {radius} setRadius = {setRadius}></Radius> */}
     <div>
-      {/* <button onClick={handleOnClick}>
-        Submit!
-      </button>
-      <div>
-        <div> The Restaurant you can pick:</div>
-        <div>{found ? '' : 'We did not found restaurant based on your request, here are the suggestions for you'}</div>
-        <br></br>
-        <div>
-       {Array.isArray(allRes)
-        ? allRes.map(element => {
-          return <div>
-            {element.name}
-            <br></br>
-            {element['display_phone']}
-            <br></br>
-            {'rating '+ element.rating}
-            <br></br>
-            {element.location['display_address']}
-            <button onClick={() => handleVisit({
-              name: element.name,
-              distance: element.distance,
-              price: element.price,
-              display_address: element.location['display_address']})}>click to visit</button>
-            <br></br>
-            <br></br>
-          </div>;
-          })
-        : null}
-       </div>
-      </div>
-      <div>
-        <div> RESTAURANT VISITED</div>
-        {displayRes && displayRes.map((each) => {
-          return(
-          // <div>
-
-          <div>
-            {each.name}
-            {Math.floor(each.distance)}
-            {each.price}
-          </div>
-          // </div>
-          )
-        })}
-      </div> */}
       <Grid container spacing={2}>
         <Grid item md={4}>
           <Paper elevation={3}>
@@ -193,7 +138,6 @@ const App = () => {
         <Grid item md={4}>
           <Paper elevation={3}>
             <Item><h1>Random Restaurants</h1></Item>
-            {/* <div>{found ? '' : 'The Restaurant you can pick:'}</div> */}
             <div>{found ? '' : 'We did not found restaurant based on your request, here are the suggestions for you'}</div>
             <Grid>
               {allRes.map(element => {
@@ -218,25 +162,17 @@ const App = () => {
                             price: element.price,
                             display_address: element.location['display_address'],
                             image_url: element['image_url']})} color={isClick[element.name]? 'success':'secondary'} endIcon={<CheckBoxIcon />}>{isClick[element.name]? 'visited':'Click to visit'}</Button>
-                          {/* { isClick[element.name] &&  <Button variant="contained" onClick={(event) => handleVisit(event,{
-                            name: element.name,
-                            distance: element.distance,
-                            price: element.price,
-                            display_address: element.location['display_address'],
-                            image_url: element['image_url']})} color='secondary' endIcon={<CheckBoxIcon />}>'visited'</Button>} */}
                         </Item>
                       </Grid>
                     </Grid>
                   </Item>
                 )
-
                 })
               }
             </Grid>
           </Paper>
         </Grid>
         <Grid item md={4} >
-          {/* <div> */}
           <Paper elevation={3} style={{maxHeight: 750, overflow: 'auto'}}>
             <Item><h1>Restaurants visited</h1></Item>
             {displayRes.map((each) => {
@@ -250,11 +186,11 @@ const App = () => {
               )
             })}
           </Paper>
-          {/* </div> */}
         </Grid>
       </Grid>
     </div>
-  </div>)
+  </div>
+  );
 }
 
 export default App
