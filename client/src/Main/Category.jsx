@@ -3,9 +3,9 @@ import * as React from 'react'
 import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import { PopupState, bindTrigger, bindMenu } from 'material-ui-popup-state'
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state'
 
-/** 
+/**
  * Category options for users to select, this will be used as the condition during the
  * call to Yelp.
  */

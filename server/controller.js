@@ -5,8 +5,8 @@ const model = require('../dbs/model/model.js');
 
 /**
  * Get restaurants that satisfy the condition passed in.
- * 
- * @param {object} conditions 
+ *
+ * @param {object} conditions
  * @returns result restaurants
  */
 var getAllRes = function(conditions) {
@@ -19,14 +19,14 @@ var getAllRes = function(conditions) {
     params: conditions
   };
   console.log('Built options based on conditions:', JSON.stringify(options));
-  
+
   return axios.request(options);
 }
 
 /**
  * Get all restaurant that has been marked as visited by user.
- * 
- * @param {Request} req request 
+ *
+ * @param {Request} req request
  * @param {Response} res response
  */
 var getVisitedRestaurant = (req, res) => {
@@ -42,8 +42,8 @@ var getVisitedRestaurant = (req, res) => {
 }
 
 /**
- * Save restaurant as visited for user. 
- * 
+ * Save restaurant as visited for user.
+ *
  * @param {Request} req request contain the info of visited restaurant
  * @param {Response} res save response
  */
@@ -68,8 +68,8 @@ var saveVisitedRestaurant = (req, res) => {
 
 /**
  * Private method to generate random selection of restaurant from an array.
- *  
- * @param {Array} arr array of source restaurants 
+ *
+ * @param {Array} arr array of source restaurants
  * @returns random selected restaurants
  */
 var randomBusiness = (arr) => {
@@ -93,8 +93,8 @@ var randomBusiness = (arr) => {
  * from it. Steps as follows:
  * - Get user filter condition from request
  * - Call Yelp fusion API with above condition to get all the restaurants
- * - Call randomize method to generate a result of 4 random restaurants  
- * 
+ * - Call randomize method to generate a result of 4 random restaurants
+ *
  * @param {Request} req request conatins user filter conditions
  * @param {Response} res response contains at most 4 random restaurants, and a flag
  *                       of whether found results based on original conditions
@@ -105,10 +105,10 @@ var getRestaurantFromYelp = (req, res) => {
   if (req.query === null || req.query.location === null) {
     res.status(400).send('Request missing restaurant infomation!');
   }
-  
+
   // get from Yelp
   const conditions = req.query;
-  yelpHelper.getAllRes(conditions)
+  getAllRes(conditions)
     .then((response) => {
       const yelpResult = response.data.businesses;
       if (yelpResult.length === 0) {
@@ -117,7 +117,7 @@ var getRestaurantFromYelp = (req, res) => {
         var largeCondition = {
           location: conditions.location
         };
-        yelpHelper.getAllRes(largeCondition)
+        getAllRes(largeCondition)
           .then((response) => {
             res.send({businesses: randomBusiness(yelpResult), found: false});
           })
@@ -136,5 +136,5 @@ var getRestaurantFromYelp = (req, res) => {
 }
 
 module.exports.getVisitedRestaurant = getVisitedRestaurant;
-module.exports.saveVisitedRestaurant = saveVisitedRestaurant; 
+module.exports.saveVisitedRestaurant = saveVisitedRestaurant;
 module.exports.getRestaurantFromYelp = getRestaurantFromYelp;

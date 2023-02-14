@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const db = require('../dbs/index.js');
 const model = require('../dbs/model/model.js');
-const yelpHelper = require('./controller.js');
 const router = require('./router.js')
 
 /* Set up static content and middlewares */
