@@ -31,7 +31,7 @@ Sometimes it's difficult to decide where to eat, use this app you can get some r
 
 ### homepage Page
 <div align="center" width="100%">
-  <img src="https://res.cloudinary.com/dqlxf5j8e/image/upload/v1676349816/MVP/Screenshot_2023-02-13_at_8.39.19_PM_pfvpmo.png" width="85%"/>
+  <img src="https://res.cloudinary.com/dqlxf5j8e/image/upload/v1676349816/MVP/Screenshot_2023-02-13_at_8.39.19_PM_pfvpmo.png" width="90%"/>
 </div>
 
 ## Tech Stack
