@@ -25,9 +25,9 @@ Once the project moves into development, the press release can be used as a touc
 </div>
 
 ## Overview
-  > It's an app to give you random restaurants ideas with the conditions you given.
+It's an app to give you random restaurants ideas with the conditions you given.
 
-  > Sometimes it's difficult to decide where to eat, use this app you can get some random restaurants filter by your picked-up criteria!
+Sometimes it's difficult to decide where to eat, use this app you can get some random restaurants filter by your picked-up criteria!
 
 ### homepage Page
 <div align="center" width="100%">
