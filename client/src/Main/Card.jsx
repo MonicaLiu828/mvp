@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -14,13 +13,10 @@ function Card(props) {
     <Paper
       sx={{
         position: 'relative',
-        // backgroundColor: 'white',
-        // color: '#fff',
         mb: 4,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        // backgroundImage: `url(${props.image})`,
+        backgroundPosition: 'center'
       }}
     >
       {/* Increase the priority of the hero background image */}
@@ -59,15 +55,5 @@ function Card(props) {
     </Paper>
   );
 }
-
-// Card.propTypes = {
-//   post: PropTypes.shape({
-//     description: PropTypes.string.isRequired,
-//     image: PropTypes.string.isRequired,
-//     imageText: PropTypes.string.isRequired,
-//     linkText: PropTypes.string.isRequired,
-//     title: PropTypes.string.isRequired,
-//   }).isRequired,
-// };
 
 export default Card;

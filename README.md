@@ -24,14 +24,15 @@ Once the project moves into development, the press release can be used as a touc
   <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white" />
 </div>
 
-## Heading ##
-  > It's an app to give at most 4 random restaurants per time for user togit chose.
-
-## Sub-Heading ##
-  > Sometimes it's difficult to decide which reastaurants you want to go to, use this app you can get some random restaurants filter by your picked-up criteria.
-
 ## Overview
-### homepage link
+It's an app to give you random restaurants ideas with the conditions you given.
+
+Sometimes it's difficult to decide where to eat, use this app you can get some random restaurants filter by your picked-up criteria!
+
+### homepage Page
+<div align="center" width="100%">
+  <img src="https://res.cloudinary.com/dqlxf5j8e/image/upload/v1676349816/MVP/Screenshot_2023-02-13_at_8.39.19_PM_pfvpmo.png" width="90%"/>
+</div>
 
 ## Tech Stack
 **Built with**
@@ -54,8 +55,10 @@ Once the project moves into development, the press release can be used as a touc
 
 
 ## How to Get Started ##
-  - git clone and run  `npm install`
-  - start server by run `npm run server-dev`
-  - then start React by running `npm run react-dev`
-  - go to `localhost:3000` you can find this app and then enjoy your meal with random restaurants!
+  - Run git clone to clone this repo to your workspace
+  - Run `npm install` to install necessary modules
+  - Create your own `.env` file in the root path
+  - Start server by run `npm run server-dev`
+  - Then start React by running `npm run react-dev`
+  - Go to `localhost:3000` you can find this app and then enjoy your meal with random restaurants!
 
